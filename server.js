@@ -1,3 +1,18 @@
+/*
+ * Edward Shih - 301165469
+ *
+ * Built using node.js
+ * Requires httpdispatcher module
+ * 'npm install httpdispatcher'
+ *
+ * Or git repo can be found at: https://github.com/sengakae/tcpserver
+ * Test script included there
+ *
+ * Only accepts GET requests
+ * GET requests are made to a /resources folder
+ * Accepts html and jpg requests
+ */
+
 // import and initialize the dispatcher module
 var HttpDispatcher = require('httpdispatcher');
 var dispatcher = new HttpDispatcher();
@@ -69,11 +84,6 @@ function connectionHandler(connect) {
     console.log('Connection opened from ' + remoteAddress);
     
     connect
-	.on('data', function(data) {
-	    // for POST requests if needed
-	    console.log('Data from ' + remoteAddress + ': ' + data);
-	    connect.write(data);
-	})
 	.on('error', function(err) {
 	    // error when establishing connectiion
 	    console.log('Connection ' + remoteAddress + ' error: ' + err.message);
